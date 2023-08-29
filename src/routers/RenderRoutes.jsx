@@ -1,7 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Route, Routes } from "react-router-dom"
-import { useContext } from "react"
-import { AppContext } from "../contexts/AppContext"
 import { routes } from "./routes"
 
 export default function RenderRoutes() {

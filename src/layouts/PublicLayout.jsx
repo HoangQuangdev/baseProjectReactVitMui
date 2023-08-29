@@ -1,24 +1,20 @@
-import { Box, useMediaQuery, useTheme } from "@mui/material"
-import PropTypes from "prop-types"
+/* eslint-disable react/no-children-prop */
+import { Box } from '@mui/material'
+import SideBar from './bars/SideBar'
+import { useContext } from 'react'
+import { AppContext } from '../contexts/AppContext'
+import AppBarWeb from './bars/appBar/AppBar'
+
 
 function PublicLayout({ children }) {
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const { handleDraw, openDraw } = useContext(AppContext)
 
   return (
-    <Box
-      sx={{
-        background: "#E5E5E5",
-        minHeight: "91vh",
-        padding: isMobile ? "0px" : "5px 20px"
-      }}
-    >
-      {children}
+    <Box sx={{ display: 'flex' }}>
+      <AppBarWeb open={openDraw} handleDrawerOpen = {handleDraw} />
+      <SideBar open={openDraw} handleDrawerClose = {handleDraw} children = {children}/>
     </Box>
   )
 }
 
 export default PublicLayout
-PublicLayout.propTypes = {
-  children: PropTypes.any.isRequired
-}
